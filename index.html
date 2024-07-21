@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Pontuação OBR</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="LogoRTR.png" alt="Logo">
+        </div>
+        <h1>Sistema de Pontuação OBR</h1>
+        <div id="elementos">
+            <!-- Elementos da Pontuação -->
+            <div class="elemento">
+                <label for="intersecao">Interseção ou Beco Sem Saída (10 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('intersecao', -1)">-</button>
+                    <input type="number" id="intersecao" value="0" min="0">
+                    <button onclick="adjustValue('intersecao', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="gangorra">Gangorra (20 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('gangorra', -1)">-</button>
+                    <input type="number" id="gangorra" value="0" min="0">
+                    <button onclick="adjustValue('gangorra', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="obstaculo">Obstáculo (20 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('obstaculo', -1)">-</button>
+                    <input type="number" id="obstaculo" value="0" min="0">
+                    <button onclick="adjustValue('obstaculo', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="gap">Ladrilho contendo Gap(s) (10 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('gap', -1)">-</button>
+                    <input type="number" id="gap" value="0" min="0">
+                    <button onclick="adjustValue('gap', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="rampa">Subir ou Descer uma Rampa (10 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('rampa', -1)">-</button>
+                    <input type="number" id="rampa" value="0" min="0">
+                    <button onclick="adjustValue('rampa', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="lombada">Ladrilho contendo Lombada(s) (10 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('lombada', -1)">-</button>
+                    <input type="number" id="lombada" value="0" min="0">
+                    <button onclick="adjustValue('lombada', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="passagem">Passagem (0 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('passagem', -1)">-</button>
+                    <input type="number" id="passagem" value="0" min="0">
+                    <button onclick="adjustValue('passagem', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="tentativa1">Tentativas Ladrilhos (1ª tentativa - 5 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('tentativa1', -1)">-</button>
+                    <input type="number" id="tentativa1" value="0" min="0">
+                    <button onclick="adjustValue('tentativa1', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="tentativa2">Tentativas Ladrilhos (2ª tentativa - 3 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('tentativa2', -1)">-</button>
+                    <input type="number" id="tentativa2" value="0" min="0">
+                    <button onclick="adjustValue('tentativa2', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="tentativa3">Tentativas Ladrilhos (3ª tentativa - 1 ponto):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('tentativa3', -1)">-</button>
+                    <input type="number" id="tentativa3" value="0" min="0">
+                    <button onclick="adjustValue('tentativa3', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="chegada">Ladrilho de Chegada (60 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('chegada', -1)">-</button>
+                    <input type="number" id="chegada" value="0" min="0" max="1">
+                    <button onclick="adjustValue('chegada', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="viva_resgate">Multiplicador de Vítimas Vivas/Mortas na Área de Resgate (× 1.3):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('viva_resgate', -1)">-</button>
+                    <input type="number" id="viva_resgate" value="0" min="0">
+                    <button onclick="adjustValue('viva_resgate', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="invertida_resgate">Multiplicador de Vítimas na Área de Resgate Invertida (× 1.1):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('invertida_resgate', -1)">-</button>
+                    <input type="number" id="invertida_resgate" value="0" min="0">
+                    <button onclick="adjustValue('invertida_resgate', 1)">+</button>
+                </div>
+            </div>
+            <div class="elemento">
+                <label for="partida">Ladrilho de Partida (5 pontos):</label>
+                <div class="controls">
+                    <button onclick="adjustValue('partida', -1)">-</button>
+                    <input type="number" id="partida" value="0" min="0" max="1">
+                    <button onclick="adjustValue('partida', 1)">+</button>
+                </div>
+            </div>
+        </div>
+        <button onclick="calcularPontuacao()">Calcular Pontuação</button>
+        <div id="result">Pontuação Total: 0 pontos</div>
+        <div class="timer">
+            <div class="timer-display" id="timerDisplay">05:00</div>
+            <div class="timer-controls">
+                <button onclick="startTimer()">Iniciar</button>
+                <button onclick="stopTimer()">Parar</button>
+                <button onclick="resetTimer()">Zerar</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
